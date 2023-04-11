@@ -1,4 +1,4 @@
-##Tools installation on a linux machine
+# Tools installation on a linux machine
 Install eksctl
 ```
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -32,7 +32,7 @@ on provider.tf change the profile_name for yours
 ```
 
 
-## To deploy the infrastructure
+# To deploy the infrastructure
 First clone the repository and move into de repository
 ```
 git clone https://github.com/Jiolloker/webdemo.git
@@ -77,12 +77,12 @@ Copy the External_ip displayed in the service to try a curl, you should see ngin
 curl http://<nginx-service-ip>
 
 ```
-##Destroy the infrastructure
+# Destroy the infrastructure
 ```
 kubectl delete namespace nginx
 terraform destroy --auto-approve
 ```
-## Link a la presentacion en proceso.
+# Link a la presentacion en proceso.
 https://docs.google.com/presentation/d/1eE2JTty0yak0BQDvE48MWC0hFd_LResiptOVYJAdJck/edit#slide=id.g21a97ba0fc6_0_130
 
 
@@ -91,5 +91,5 @@ https://docs.google.com/presentation/d/1eE2JTty0yak0BQDvE48MWC0hFd_LResiptOVYJAd
 
 
 ---  ---  ---  --- 
-## Local deployment for testing purposes.
+# Local deployment for testing purposes.
 
