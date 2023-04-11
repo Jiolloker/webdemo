@@ -88,8 +88,117 @@ https://docs.google.com/presentation/d/1eE2JTty0yak0BQDvE48MWC0hFd_LResiptOVYJAd
 
 
 
-
+<br>
 
 ---  ---  ---  --- 
-# Local deployment for testing purposes.
+## Local deployment for testing purposes.
+
+<br>
+
+### Herramientas a instalar en maquina linux
+---
+
+<br>
+
+- Minikube
+- jenkins
+- argoCD
+- docker
+- eksctl
+- kubectl
+- aws-cli
+- curl
+- git
+- docker-compose
+
+<br>
+<br>
+
+### Levantar Jenkins con docker-compose.
+---
+
+<br>
+
+```bash
+cd webdemo/terraform/yaml
+```
+```bash
+docker-compose up -d
+```
+
+<br>
+
+### Plugins y herramientas a instalar en jenkins
+---
+
+<br>
+
+- configurar credenciales github_id dockerhub_id
+- Instalar plugins nodejs , docker , gitpush , snyk
+- En la configuracion de nodeJS en el name ponerle nodejs_for_test
+- En la configuracion de docker (configure clouds) poner:  tcp://docker:2376
+- Se debe generar una credencial del tipo secret text con el nombre **snyktoken** y el token correspondiente de la cuenta de snyk (esto esta declarado en el stage snyk scan )
+- Se debe generar una credencial del tipo secret text con el nombre **token-github** y el token correspondiente de github (esto se declarar en el stage issues)
+- Dentro del contenedor de jenkins instalar snyk: 
+
+```bash
+wget https://github.com/snyk/snyk/releases/download/v1.667.0/snyk-linux
+chmod +x snyk-linux
+sudo mv snyk-linux /usr/local/bin/snyk
+```
+
+<br>
+
+
+### Levantar Minikube
+---
+<br>
+
+```
+minikube start
+```
+
+<br>
+
+### Instalar ArgoCD en k8s
+---
+<br>
+
+```
+minikube kubectl -- create namespace argocd
+```
+```bash
+minikube kubectl -- apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+<br>
+
+### Acceder ArgoCD UI
+---
+<br>
+
+```bash
+minikube -- kubectl get svc -n argocd
+```
+```bash
+minikube -- kubectl port-forward svc/argocd-server 8080:443 -n argocd
+```
+<br>
+
+### Obtener credenciales de ArgoCD:
+---
+
+<br>
+
+```
+minikube kubectl -- -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+```
+<br>
+
+
+### Diagrama de proceso CI/CD
+---
+
+<br>
+
+![DiagramaCICD](/img/cicd.png)
 
