@@ -84,3 +84,12 @@ terraform destroy --auto-approve
 ```
 ## Link a la presentacion en proceso.
 https://docs.google.com/presentation/d/1eE2JTty0yak0BQDvE48MWC0hFd_LResiptOVYJAdJck/edit#slide=id.g21a97ba0fc6_0_130
+
+
+
+
+
+
+---  ---  ---  --- 
+Local deployment for testing purposes.
+
