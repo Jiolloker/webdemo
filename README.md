@@ -31,19 +31,18 @@ docker-compose up -d
 ## Plugins y herramientas a instalar en jenkins
 
 - configurar credenciales github_id dockerhub_id
-- instalar plugins nodejs , docker , gitpush 
-- en la configuracion de node js en el name ponerle nodejs_for_test
-- en la configuracion de docker (configure clouds)  tcp://docker:2376
-- se debe generar una credencial del tipo secret text con el nombre snyktoken y el token correspondiente de la cuenta de snyk (esto esta declarado en el stage snyk scan )
-- lo mismo para el stage de issue se debe generar un secret text con el nombre token-github y el token correspondiente de github (esto se declarar en el stage issues)
-- otro tema:  no pude hacer andar el plugin de snyk entonces  hice lo siguiente conectado dentro del contenedor de jenkins : 
+- Instalar plugins nodejs , docker , gitpush , snyk
+- En la configuracion de nodeJS en el name ponerle nodejs_for_test
+- En la configuracion de docker (configure clouds) poner:  tcp://docker:2376
+- Se debe generar una credencial del tipo secret text con el nombre **snyktoken** y el token correspondiente de la cuenta de snyk (esto esta declarado en el stage snyk scan )
+- Se debe generar una credencial del tipo secret text con el nombre **token-github** y el token correspondiente de github (esto se declarar en el stage issues)
+- Dentro del contenedor de jenkins instalar snyk: 
 
 ```bash
 wget https://github.com/snyk/snyk/releases/download/v1.667.0/snyk-linux
 chmod +x snyk-linux
 sudo mv snyk-linux /usr/local/bin/snyk
 ```
-- el plugin se snyk en si lo tengo instalado pero en un momento no me funciono y fui por esto que les comente mas arriba , despues toque una configuracion mas pero para ese entonces ya lo habia instalado a mano
 
 <br>
 
