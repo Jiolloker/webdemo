@@ -59,8 +59,6 @@ pipeline {
         }
       }
     }
-    
-
     // Agregado Stage Snyk Issue
     stage('Snyk Issue') {
       steps {
@@ -95,10 +93,6 @@ pipeline {
       }
     }
     //Finaliza Stage Push
-
-  
-
-
     stage('Update Deployment') {
       when {
         expression {
@@ -118,7 +112,6 @@ pipeline {
           def updatedDeploymentContent = deploymentContent.replaceAll('fcambres/webdemo:v1.*', "fcambres/webdemo:v1.${"$BUILD_NUMBER"}")
           writeFile file: deploymentFile, text: updatedDeploymentContent
           sh "cat ${params.WORKPLACE}/app/deployment.yml"
-
           // Push changes to GitHub
           withCredentials([gitUsernamePassword(credentialsId: 'github_id', gitToolName: 'git-tool')]){
             sh """
@@ -143,3 +136,9 @@ pipeline {
     }
   }
 }
+/*
+apt install wget -y &&
+wget https://github.com/snyk/snyk/releases/download/v1.667.0/snyk-linux &&
+chmod +x snyk-linux &&
+mv snyk-linux /usr/local/bin/snyk
+*/
