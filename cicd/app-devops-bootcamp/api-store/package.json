@@ -21,10 +21,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^9.0.0",
-    "@nestjs/core": "^9.0.0",
+    "@nestjs/common": "^9.3.10",
+    "@nestjs/core": "^9.3.10",
     "@nestjs/mongoose": "^9.2.1",
-    "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-express": "^9.3.10",
     "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
     "mongoose": "^6.10.1",
